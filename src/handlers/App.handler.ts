@@ -27,7 +27,6 @@ export class AppHandler {
 
     private async listarTodo(req: Request, res: Response, next?: NextFunction) {
         try {
-            console.log(AppHandler.instance._controller)
             const list = await AppHandler.instance._controller.getAll()
             return res.send(list)
         }catch (e) {
@@ -37,7 +36,6 @@ export class AppHandler {
 
     private async listarTodo2(req: Request, res: Response, next?: NextFunction) {
         try {
-            console.log(AppHandler.instance._controller)
             const list = await AppHandler.instance._controller.getAll2()
             return res.send(list)
         }catch (e) {
