@@ -1,10 +1,12 @@
+import { ENVIRONMENT } from "../../constantes";
+
 export default {
-    host: 'localhost',
-    user: 'postgres',
+    host: ENVIRONMENT.database.typeorm.host||'localhost',
+    user:  ENVIRONMENT.database.typeorm.user||'postgres',
     port: 5432,
-    password: "sa",
-    database: "practica-yawi",
-    max: 20,
-    idleTimeoutMillis: 30000,
-    connectionTimeoutMillis: 2000,
+    password:  ENVIRONMENT.database.typeorm.password||"sa",
+    database: ENVIRONMENT.database.typeorm.database|| "tienda-online",
+    max:  ENVIRONMENT.database.typeorm.max||20,
+    idleTimeoutMillis:  ENVIRONMENT.database.typeorm.idleTimeoutMillis||30000,
+    connectionTimeoutMillis:  ENVIRONMENT.database.typeorm.connectionTimeoutMillis||2000,
 }

@@ -1,8 +1,9 @@
-import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {BaseEntity} from "./base.entity";
+import { Persona } from "./persona.entity";
 
 @Entity('usuarios')
-export class UsuarioEntity extends BaseEntity{
+export class Usuario extends BaseEntity{
     @PrimaryGeneratedColumn()
     id?:number
 
@@ -11,5 +12,9 @@ export class UsuarioEntity extends BaseEntity{
 
     @Column()
     password?:string
+
+    @ManyToOne(()=>Persona,persona=>persona.usuario)
+    @JoinColumn({name:'persona_id'})
+    persona?:Persona
 
 }

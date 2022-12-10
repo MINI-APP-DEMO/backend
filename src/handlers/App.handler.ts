@@ -1,5 +1,6 @@
 import {NextFunction, Request, Response, Router} from 'express'
 import {AppController} from "../controllers/app.controller";
+import {UsuarioController} from "../controllers-routers/UsuarioController";
 
 
 export class AppHandler {
@@ -7,7 +8,6 @@ export class AppHandler {
     private readonly _router: Router
     private readonly base = '/'
     private _controller: AppController=new AppController()
-
     private constructor() {
         this._router = Router()
     }
@@ -27,6 +27,7 @@ export class AppHandler {
 
     private async listarTodo(req: Request, res: Response, next?: NextFunction) {
         try {
+            console.log(AppHandler.instance._controller)
             const list = await AppHandler.instance._controller.getAll()
             return res.send(list)
         }catch (e) {
@@ -36,6 +37,7 @@ export class AppHandler {
 
     private async listarTodo2(req: Request, res: Response, next?: NextFunction) {
         try {
+            console.log(AppHandler.instance._controller)
             const list = await AppHandler.instance._controller.getAll2()
             return res.send(list)
         }catch (e) {

@@ -4,6 +4,9 @@ import bodyParser from 'body-parser'
 import morgan from "morgan";
 import _routers from './_routers'
 import {ENVIRONMENT} from "./constantes";
+import { TypeORMSource } from "./database/typeorm/typeORM.source";
+import { PgSource } from "./database/pg/pg.source";
+import indexControllers from "./controllers-routers/index.controllers";
 export class App{
     private _app:Application
     constructor(private port?:number) {
@@ -11,6 +14,8 @@ export class App{
         this.middlewares()
         this.configuraciones()
         this.enrutamiento()
+        this.initDatabase()
+        this.loadControllers()
     }
     private configuraciones(){
         this._app.set('PORT',process.env.port||this.port||5000)
@@ -18,6 +23,17 @@ export class App{
         this._app.use(bodyParser.json())
         this._app.use(bodyParser.urlencoded({extended:true}))
     }
+
+    private loadControllers(){
+     // const rutas=  indexControllers
+      //  console.log(rutas)
+
+
+    }
+    private async initDatabase() {
+        await new TypeORMSource().dbConnection;
+    }
+
     private middlewares(){
         console.log('environment',ENVIRONMENT)
         this._app.use(morgan("dev"))

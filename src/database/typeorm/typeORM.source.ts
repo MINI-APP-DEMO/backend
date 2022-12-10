@@ -15,7 +15,7 @@ export class TypeORMSource {
         console.log('inicializando app')
         this.dataSource.initialize()
             .then((con) => {
-                console.log('base de datos conectada TYPEORM::')
+                console.log('base de datos conectada ::', con.isInitialized)
             })
             .catch((error) => {
                 console.log('error al conectar base de datos::', error)
@@ -25,6 +25,7 @@ export class TypeORMSource {
 
     get dbConnection(): Promise<DataSource> {
         try {
+
             console.log('status conexion ::',this.dataSource.isInitialized)
             if (this.dataSource.isInitialized) return Promise.resolve(this.dataSource);
             else this.inicializarConexion()

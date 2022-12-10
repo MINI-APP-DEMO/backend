@@ -1,5 +1,7 @@
-import {UsuarioEntity} from "./usuario.entity";
+import { Persona } from "./persona.entity";
+import {Usuario} from "./usuario.entity";
 
 export default [
-    UsuarioEntity
+    Usuario,
+    Persona
 ]
