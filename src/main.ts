@@ -1,7 +1,7 @@
 import {App} from "./App";
 
 function  main(){
-    const app=new App(5000)
+    const app=new App(3000)
     app.listen()
 }
 

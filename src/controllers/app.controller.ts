@@ -8,14 +8,13 @@ export class AppController{
     }
     async getAll() {
         try {
-            const conexion= await new TypeORMSource().dbConnection
+            const conexion= await TypeORMSource.getInstance.dbConnection
             return conexion.manager.find(Usuario)
         }catch (e) {
             throw e;
         }
 
     }
-
     async getAll2() {
         try {
             const conexion= new PgSource().dbConexion

@@ -30,12 +30,15 @@ export class App{
 
 
     }
-    private async initDatabase() {
-        await new TypeORMSource().dbConnection;
+    private  initDatabase() {
+        setTimeout(async () => {
+          await TypeORMSource.getInstance.dbConnection;
+        }, 3000);
+       
     }
 
     private middlewares(){
-        console.log('environment',ENVIRONMENT)
+        // console.log('environment',ENVIRONMENT)
         this._app.use(morgan("dev"))
     }
     private enrutamiento(){

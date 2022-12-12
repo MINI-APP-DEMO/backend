@@ -12,7 +12,7 @@ export class BaseDataAccess {
     protected pg
 
     constructor() {
-        this.db = new TypeORMSource().dbConnection
+        this.db = TypeORMSource.getInstance.dbConnection;
         this.pg = new PgSource().dbConexion
     }
 
